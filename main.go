@@ -31,10 +31,11 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	defer fmt.Println("all done")
 
-	daysBack := 365
+	daysBack := 10 * 365
 	for i := daysBack; i >= 1; i-- {
 		fmt.Printf("commiting %d days ago\n", i)
-		for j := 0; j < 3; j++ {
+		commitsNum := rand.Intn(5) + 1
+		for j := 0; j < commitsNum; j++ {
 			changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"
 			if err := os.WriteFile("tmp.txt", []byte(changeTxt), 0o777); err != nil {
 				log.Fatalln("writing tmp file failed: ", err)

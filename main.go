@@ -34,7 +34,7 @@ func main() {
 	daysBack := 365
 	for i := daysBack; i >= 1; i-- {
 		fmt.Printf("commiting %d days ago\n", i)
-		for j := 0; j < 30; j++ {
+		for j := 0; j < 3; j++ {
 			changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"
 			if err := os.WriteFile("tmp.txt", []byte(changeTxt), 0o777); err != nil {
 				log.Fatalln("writing tmp file failed: ", err)

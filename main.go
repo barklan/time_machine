@@ -33,7 +33,7 @@ func main() {
 
 	daysBack := 365
 	for i := daysBack; i >= 60; i-- {
-		if rand.Intn(2) == 0 {
+		if rand.Intn(30) > 10 {
 			continue
 		}
 		fmt.Printf("commiting %d days ago\n", i)

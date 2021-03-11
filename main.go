@@ -32,9 +32,12 @@ func main() {
 	defer fmt.Println("all done")
 
 	daysBack := 365
-	for i := daysBack; i >= 1; i-- {
+	for i := daysBack; i >= 60; i-- {
+		if rand.Intn(2) == 0 {
+			continue
+		}
 		fmt.Printf("commiting %d days ago\n", i)
-		commitsNum := rand.Intn(24) + 1
+		commitsNum := rand.Intn(20) + 1
 		for j := 0; j < commitsNum; j++ {
 			changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"
 			if err := os.WriteFile("tmp.txt", []byte(changeTxt), 0o777); err != nil {

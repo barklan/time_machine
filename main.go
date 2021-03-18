@@ -37,7 +37,7 @@ func main() {
 			continue
 		}
 		fmt.Printf("commiting %d days ago\n", i)
-		commitsNum := rand.Intn(20) + 1
+		commitsNum := rand.Intn(7) + 1
 		for j := 0; j < commitsNum; j++ {
 			changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"
 			if err := os.WriteFile("tmp.txt", []byte(changeTxt), 0o777); err != nil {

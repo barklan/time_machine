@@ -13,7 +13,7 @@ import (
 
 var (
 	add    = `git add --all`
-	commit = `MY_TIME=$(date --date=\"%d days ago\" -R) GIT_AUTHOR_DATE=$MY_TIME GIT_COMMITTER_DATE=$MY_TIME git commit -m %q`
+	commit = `MY_TIME=$(date --date='%d days ago' -R) GIT_AUTHOR_DATE=$MY_TIME GIT_COMMITTER_DATE=$MY_TIME git commit -m %q`
 )
 
 // func main() {

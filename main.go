@@ -13,7 +13,7 @@ import (
 
 var (
 	add    = `git add --all`
-	commit = `MY_TIME=$(date --date='%d days ago' -R) GIT_AUTHOR_DATE=$MY_TIME GIT_COMMITTER_DATE=$MY_TIME git commit -m %q`
+	commit = `git commit -m %q`
 )
 
 // func main() {
@@ -36,8 +36,13 @@ func main() {
 	if _, err := exec.Command("bash", bashArgs(add)...).Output(); err != nil {
 		log.Fatalln("git add failed: ", err)
 	}
-	commitCmd := fmt.Sprintf(commit, 2, "boom")
-	log.Println(commitCmd)
+
+	day := time.Now().AddDate(0, 0, -1)
+	timeStr := day.Format("Mon, 02 Jan 2006 15:04:05 -0700")
+	os.Setenv("GIT_AUTHOR_DATE", timeStr)
+	os.Setenv("GIT_COMMITTER_DATE", timeStr)
+
+	commitCmd := fmt.Sprintf(commit, "hey!")
 	if _, err := exec.Command("bash", bashArgs(commitCmd)...).Output(); err != nil {
 		log.Fatalln("git commit failed: ", err)
 	}

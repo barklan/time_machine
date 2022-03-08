@@ -33,7 +33,7 @@ func main() {
 
 	daysBack := 12
 	for i := 1; i < daysBack; i++ {
-		fmt.Printf("commiting %d days ago", i)
+		fmt.Printf("commiting %d days ago\n", i)
 		changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"
 		if err := os.WriteFile("tmp.txt", []byte(changeTxt), 0o777); err != nil {
 			log.Fatalln("writing tmp file failed: ", err)
@@ -42,7 +42,7 @@ func main() {
 			log.Fatalln("git add failed: ", err)
 		}
 
-		day := time.Now().AddDate(0, 0, -1)
+		day := time.Now().AddDate(0, 0, -i)
 		timeStr := day.Format("Mon, 02 Jan 2006 15:04:05 -0700")
 		os.Setenv("GIT_AUTHOR_DATE", timeStr)
 		os.Setenv("GIT_COMMITTER_DATE", timeStr)

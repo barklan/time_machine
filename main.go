@@ -31,7 +31,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	defer fmt.Println("all done")
 
-	daysBack := 5 * 365
+	daysBack := 12
 	for i := 1; i < daysBack; i++ {
 		fmt.Printf("commiting %d days ago", i)
 		changeTxt := faker.Paragraph() + "\n" + fmt.Sprint(rand.Int()) + "\n"

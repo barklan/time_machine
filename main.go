@@ -16,13 +16,6 @@ var (
 	commit = `git commit -m %q`
 )
 
-// func main() {
-// 	commitMsg := faker.Sentence()
-// 	daysBack := 5 * 365
-// 	for i := 1; i < daysBack; i++ {
-// 		os.WriteFile("tmp.txt", []byte(), 0777)
-// 	}
-// }
 func bashArgs(cmd string) []string {
 	return []string{"-c", cmd}
 }

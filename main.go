@@ -36,7 +36,7 @@ func main() {
 	if _, err := exec.Command("bash", bashArgs(add)...).Output(); err != nil {
 		log.Fatalln("git add failed: ", err)
 	}
-	commitCmd := fmt.Sprintf(commit, 1, "boom")
+	commitCmd := fmt.Sprintf(commit, 2, "boom")
 	if _, err := exec.Command("bash", bashArgs(commitCmd)...).Output(); err != nil {
 		log.Fatalln("git commit failed: ", err)
 	}
